@@ -7,11 +7,13 @@
         <v-text-field 
         prepend-inner-icon="mdi-account" 
         variant="outlined" 
-        label="Username"></v-text-field>
+        label="Username"
+        v-model="username"></v-text-field>
         <v-text-field 
         prepend-inner-icon="mdi-lock"
          variant="outlined" 
-         label="Password" 
+         label="Password"
+         v-model="password" 
          type="password"></v-text-field>
          <v-btn block color="black" @click="signIn">Sign in</v-btn>
       </v-card-text>
@@ -24,8 +26,19 @@ definePageMeta({
 }
 
 );
+const username = ref ("")
+const password = ref ("")
+
+const defaultUsername = ref("admin")
+const defaultPassword = ref("admin123")
 
 function signIn(){
-  alert("Successfully signed in!");
+  //alert("Successfully signed in!");
+  if(username.value === defaultUsername.value && password.value === defaultPassword.value){
+    navigateTo("/dashboard");
+
+  }else{
+    alert("Invalid username or password. Please try again");
+  }
 }
 </script>
